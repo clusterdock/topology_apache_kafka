@@ -45,5 +45,5 @@ def main(args):
     # start each node independently so they will all end up independent one-node clusters.
 
     for node in cluster:
-        node.execute('/kafka/bin/zookeeper-server-start.sh /kafka/config/zookeeper.properties &', detach=True)
-        node.execute('/kafka/bin/kafka-server-start.sh /kafka/config/server.properties &', detach=True)
+        node.execute('/start_zookeeper &', detach=True)
+        node.execute('/start_kafka &', detach=True)

@@ -1,9 +1,8 @@
-TODO(jarcec): Needs update, big time
-=============================
-MapR topology for clusterdock
-=============================
+=====================================
+Apache Kafka topology for clusterdock
+=====================================
 
-This repository houses the **MapR** topology for `clusterdock`_.
+This repository houses the **Apache Kafka** topology for `clusterdock`_.
 
 .. _clusterdock: https://github.com/clusterdock/clusterdock
 
@@ -18,26 +17,24 @@ with the ``clusterdock`` script:
 
 .. code-block:: console
 
-    $ git clone https://github.com/clusterdock/topology_mapr.git
-    $ clusterdock start topology_mapr --namespace streamsets --node-disks '{node-1:[/dev/xvdb],node-2:[/dev/xvdc]}' --predictable --mapr-version 5.2.2 --mep-version 3.0.1
+    $ git clone https://github.com/clusterdock/topology_apache_kafka.git
+    $ clusterdock start topology_apache_kafka --kafka-version 1.0.0 --scala-version 2.11 
 
 To see full usage instructions for the ``start`` action, use ``-h``/``--help``:                                                 
 
 .. code-block:: console
 
-    $ clusterdock start topology_mapr -h
+    $ clusterdock start topology_apache_kafka -h
     usage: clusterdock start [--always-pull] [--namespace ns] [--network nw]
-                         [-o sys] [-r url] [-h] [--mapr-version ver]
-                         [--node-disks map] [--predictable]
-                         [--secondary-nodes node [node ...]]
-                         [--primary-node node [node ...]]
-                         topology
+                             [-o sys] [-r url] [-h] [--kafka-version ver]
+                             [--scala-version ver] [--brokers node [node ...]]
+                             topology
 
-    Start a MapR cluster
-    
+    Start a Kafka cluster
+
     positional arguments:
       topology              A clusterdock topology directory
-    
+
     optional arguments:
       --always-pull         Pull latest images, even if they're available locally
                             (default: False)
@@ -51,17 +48,11 @@ To see full usage instructions for the ``start`` action, use ``-h``/``--help``:
                             Docker Registry from which to pull images (default:
                             docker.io)
       -h, --help            show this help message and exit
-    
-    MapR arguments:
-      --mapr-version ver    MapR version to use (default: 5.2.0)
-      --mep-version ver     MEP version to use (default: None)
-      --node-disks map      Map of node names to block devices (default: None)
-      --predictable         If specified, attempt to expose container ports to the
-                            same port number on the host (default: False)
-    
+
+    Kafka arguments:
+      --kafka-version ver   Kafka version to use (default: 1.0.0)
+      --scala-version ver   Scala version to use (default: 2.11)
+
     Node groups:
-      --secondary-nodes node [node ...]
-                            Nodes of the secondary-nodes group (default:
-                            ['node-2'])
-      --primary-node node [node ...]
-                            Nodes of the primary-node group (default: ['node-1'])
+      --brokers node [node ...]
+                            Nodes of the brokers group (default: ['node-1'])
